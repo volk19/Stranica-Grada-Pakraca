@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Događaji - Pakrac</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Grad Pakrac</h1>
+        <img src="Grb-Grada-Pakraca.png" alt="Grb Pakraca" class="grb">
+        <nav>
+            <ul>
+                <li><a href="index.html">Naslovnica</a></li>
+                <li><a href="o_gradu.html">O Gradu</a></li>
+                <li><a href="vijesti.html">Vijesti</a></li>
+                <li><a href="radno_vrijeme.html">Radno Vrijeme</a></li>
+                <li><a href="usluge.html">Usluge</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Događaji u Pakracu</h2>
+        <ul>
+            <li>Obiljetnica Operacija Blijesak - 01.05.2025</li>
+            <li>Sajam “Slavonski Banovac” - 17.10.2025</li>
+            <li>Grahfest - 25.10.2025</li>
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2025 Grad Pakrac. Sva prava pridržana.</p>
+    </footer>
+    <script>
+        async function fetchNovosti(page = 1) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/novosti?page=${page}`);
+                const data = await response.json();
+
+                const novostiContainer = document.getElementById('vijesti');
+                novostiContainer.innerHTML = '';
+
+                data.novosti.forEach(novost => {
+                    const novostElement = document.createElement('div');
+                    novostElement.classList.add('novost-card');
+
+                    novostElement.innerHTML = `
+                        <h3><a href="${novost.link}" target="_blank">${novost.title}</a></h3>
+                        <p>${novost.excerpt}</p>
+                    `;
+
+                    novostiContainer.appendChild(novostElement);
+                });
+
+                // kontrola paginacije
+                const pagination = document.createElement('div');
+                pagination.classList.add('pagination');
+                if (data.page > 1) {
+                    const prevPage = document.createElement('button');
+                    prevPage.textContent = 'Prethodna';
+                    prevPage.onclick = () => fetchNovosti(data.page - 1);
+                    pagination.appendChild(prevPage);
+                }
+                if (data.page < data.totalPages) {
+                    const nextPage = document.createElement('button');
+                    nextPage.textContent = 'Sljedeća';
+                    nextPage.onclick = () => fetchNovosti(data.page + 1);
+                    pagination.appendChild(nextPage);
+                }
+
+                novostiContainer.appendChild(pagination);
+
+            } catch (error) {
+                console.error('Greška pri dohvaćanju vijesti:', error);
+            }
+        }
+
+        // Učitavanje prve stranice
+        fetchNovosti();
+    </script>
+</body>
+</html>

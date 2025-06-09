@@ -1,0 +1,204 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #0077cc;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header .grb {
+    display: block;
+    margin: 10px auto;
+    max-width: 60px; 
+    height: auto;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #005fa3;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main h2 {
+    color: #005fa3;
+}
+
+footer {
+    text-align: center;
+    background-color: #0077cc;
+    color: white;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.centrirana-slika {
+    display: block;
+    margin: 20px auto; 
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.store-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.store-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.store-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.store-card h3 {
+    color: #005fa3;
+    margin: 15px 0 10px;
+}
+
+.store-card a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.institution-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.institution-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.institution-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.institution-card h3 {
+    color: #005fa3;
+    margin: 15px 0 10px;
+}
+
+.institution-card a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.novosti-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.novost-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.novost-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.novost-card h3 {
+    color: #005fa3;
+    margin-bottom: 10px;
+}
+
+.novost-card a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.novost-card a:hover {
+    text-decoration: underline;
+}
+
+.novost-card p {
+    color: #666;
+    margin: 10px 0 0;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #005fa3;
+}
