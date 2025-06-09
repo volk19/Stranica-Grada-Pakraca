@@ -22,31 +22,27 @@
     </header>
     <main>
         <h2>Događaji u Pakracu</h2>
-        <ul>
-            <li>Obiljetnica Operacija Blijesak - 01.05.2025</li>
-            <li>Sajam “Slavonski Banovac” - 17.10.2025</li>
-            <li>Grahfest - 25.10.2025</li>
-        </ul>
+        <div id="vijesti" class="novosti-container"></div>
     </main>
     <footer>
         <p>&copy; 2025 Grad Pakrac. Sva prava pridržana.</p>
     </footer>
     <script>
-        async function fetchNovosti(page = 1) {
+        async function fetchEventi(page = 1) {
             try {
-                const response = await fetch(`http://localhost:3000/api/novosti?page=${page}`);
+                const response = await fetch(`http://localhost:3000/api/eventi?page=${page}`);
                 const data = await response.json();
 
                 const novostiContainer = document.getElementById('vijesti');
                 novostiContainer.innerHTML = '';
 
-                data.novosti.forEach(novost => {
+                data.eventi.forEach(eventi => {
                     const novostElement = document.createElement('div');
                     novostElement.classList.add('novost-card');
 
                     novostElement.innerHTML = `
-                        <h3><a href="${novost.link}" target="_blank">${novost.title}</a></h3>
-                        <p>${novost.excerpt}</p>
+                        <h3><a href="${eventi.link}" target="_blank">${eventi.title}</a></h3>
+                        <p>${eventi.date}</p>
                     `;
 
                     novostiContainer.appendChild(novostElement);
@@ -58,13 +54,13 @@
                 if (data.page > 1) {
                     const prevPage = document.createElement('button');
                     prevPage.textContent = 'Prethodna';
-                    prevPage.onclick = () => fetchNovosti(data.page - 1);
+                    prevPage.onclick = () => fetchEventi(data.page - 1);
                     pagination.appendChild(prevPage);
                 }
                 if (data.page < data.totalPages) {
                     const nextPage = document.createElement('button');
                     nextPage.textContent = 'Sljedeća';
-                    nextPage.onclick = () => fetchNovosti(data.page + 1);
+                    nextPage.onclick = () => fetchEventi(data.page + 1);
                     pagination.appendChild(nextPage);
                 }
 
@@ -76,7 +72,7 @@
         }
 
         // Učitavanje prve stranice
-        fetchNovosti();
+        fetchEventi();
     </script>
 </body>
 </html>
